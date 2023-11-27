@@ -1,19 +1,19 @@
 export default {
     ci: {
-      prefix: 'https://demoqa',
+      prefix: 'https://demo.applitools',
       suffix: '.com',
     },
     local: {
-      api: 'https://demoqa.com',
-      home: 'https://demoqa.com',
+      api: 'https://demo.applitools.com/',
+      home: 'https://demo.applitools.com/',
     },
     production: {
-      api: 'https://demoqa.com',
-      home: 'https://demoqa.com',
+      api: 'https://demo.applitools.com/',
+      home: 'https://demo.applitools.com/',
     },
     staging: {
-      api: 'https://demoqa.com',
-      home: 'https://demoqa.com',
+      api: 'https://demo.applitools.com/',
+      home: 'https://demo.applitools.com/',
     },
 };
   
