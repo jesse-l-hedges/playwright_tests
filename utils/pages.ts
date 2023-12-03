@@ -1,6 +1,8 @@
 export default {
-  bookStorePage: 'bookStore',
-  homePage: 'home',
-  loginPage: 'login',
-  profile: 'profile',
+  loginPage: '/',
+  inventoryPage: '/inventory.html',
+  cartPage: '/cart.html',
+  checkoutInfoPage: '/checkout-step-one.html',
+  checkoutOverviewPage: '/checkout-step-two.html',
+  checkoutCompletePage: '/checkout-complete.html'
 };

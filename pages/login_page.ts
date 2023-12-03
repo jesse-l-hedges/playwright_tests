@@ -6,16 +6,15 @@ export class LoginPage {
     readonly pageTitle: string;
     readonly usernameTextbox: Locator;
     readonly passwordTextbox: Locator;
-    readonly signInButton: Locator;
+    readonly LoginButton: Locator;
     readonly rememberMeCheckbox: Locator;
 
     constructor(page: Page) {
         this.page = page;
-        this.usernameTextbox = page.getByPlaceholder('Enter your username');
-        this.passwordTextbox = page.getByPlaceholder('Enter your password')
-        this.signInButton = page.getByText('Sign in');
-        this.rememberMeCheckbox = page.getByText('Remember Me');
-        this.pageTitle = "ACME Demo App by Applitools";
+        this.usernameTextbox = page.getByPlaceholder('Username');
+        this.passwordTextbox = page.getByPlaceholder('Password')
+        this.LoginButton = page.getByText('Login');
+        this.pageTitle = 'Swag Labs';
     }
 
     async fillUsername(username: string) {
@@ -27,11 +26,7 @@ export class LoginPage {
     }
 
     async clickSignIn() {
-        await this.signInButton.click();
-    }
-
-    async checkRememberMe() {
-        await this.rememberMeCheckbox.click();
+        await this.LoginButton.click();
     }
 
     async doLogin(username: string, password: string) {
