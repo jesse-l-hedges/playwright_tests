@@ -12,17 +12,17 @@ test.use({ storageState: { cookies: [], origins: [] } }); // doesn't share the l
 test.describe.configure({ mode: 'serial' });
 
 test.beforeEach(async ({ page }) => {
-  await page.goto(pages.loginPage);
+  await page.goto('https://www.saucedemo.com/');
   loginPage = new LoginPage(page);
 });
 
 test.describe('Login page tests', () => {
     test('valid login', async({page}) => {
-      await loginPage.doLogin("user", "password");
+      await loginPage.doLogin("standard_user", "secret_sauce");
     });
 
     test('invalid login', async({page}) => {
-      await loginPage.doLogin("user", "");
+      await loginPage.doLogin("standard_user", "bad_password");
     });
 
     test('missing login', async({page}) => {
@@ -30,11 +30,11 @@ test.describe('Login page tests', () => {
     });
 
     test('invalid username', async({page}) => {
-      await loginPage.doLogin("foo", "password");
+      await loginPage.doLogin("user", "secret_sauce");
     });
 
     test('invalid password', async({page}) => {
-      await loginPage.doLogin("user", "bar")
+      await loginPage.doLogin("standard_user", "bar")
     });
 
 });

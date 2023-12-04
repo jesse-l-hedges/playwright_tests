@@ -13,10 +13,10 @@ test.use({ storageState: { cookies: [], origins: [] } }); // doesn't share the l
 test.describe.configure({ mode: 'serial' });
 
 test.beforeEach(async ({ page }) => {
-  await page.goto(pages.loginPage);
+  await page.goto('https://www.saucedemo.com/');
   loginPage = new LoginPage(page);
   await loginPage.doLogin("standard_user", "secret_sauce");
-  await page.goto(pages.inventoryPage);
+  await page.goto('https://www.saucedemo.com/inventory.html');
   inventoryPage = new InventoryPage(page);
 });
 
@@ -37,8 +37,10 @@ test.describe('Inventory page tests', () => {
     test('user can view cart', async({page}) => {
         inventoryPage.clickCartButton();
         await page.goto(pages.cartPage);
-        expect(cartPage.pageTitle()).toHaveText('Swag Labs');
+        expect(cartPage.pageTitle).toContain('Swag Labs')
     });
+});
 
-
+test.afterEach(async ({ }) => {
+  
 });
