@@ -12,32 +12,50 @@ test.use({ storageState: { cookies: [], origins: [] } }); // doesn't share the l
 // test.use({ storageState: undefined }); // https://github.com/microsoft/playwright/issues/17396
 test.describe.configure({ mode: 'serial' });
 
+/*
 test.beforeEach(async ({ page }) => {
   await page.goto('https://www.saucedemo.com/');
   loginPage = new LoginPage(page);
   await loginPage.doLogin("standard_user", "secret_sauce");
   await page.goto('https://www.saucedemo.com/inventory.html');
-  inventoryPage = new InventoryPage(page);
+  // inventoryPage = new InventoryPage(page);
 });
+*/
 
-test.describe('Inventory page tests', () => {
-    test('user sees inventory list', async({page}) => {
+test.describe('Inventory page tests', async() => {
+    test('user sees inventory list', async({ page }) => {
+      await page.goto('https://www.saucedemo.com/');
+      loginPage = new LoginPage(page);
+      await loginPage.doLogin("standard_user", "secret_sauce");
+      // await page.goto('https://www.saucedemo.com/inventory.html');
       await inventoryPage.inventoryContainer.isVisible();
     });
 
-    test('user can add item to cart', async({page}) => {
+    test('user can add item to cart', async({ page }) => {
         inventoryPage.addItemToCart('Sauce Labs Bike Light');
+        await page.goto('https://www.saucedemo.com/');
+        loginPage = new LoginPage(page);
+        await loginPage.doLogin("standard_user", "secret_sauce");
+        // await page.goto('https://www.saucedemo.com/inventory.html');
     });
 
-    test('user can remove item from cart', async({page}) => {
+    test('user can remove item from cart', async({ page }) => {
+        await page.goto('https://www.saucedemo.com/');
+        loginPage = new LoginPage(page);
+        await loginPage.doLogin("standard_user", "secret_sauce");
+        // await page.goto('https://www.saucedemo.com/inventory.html');
         inventoryPage.addItemToCart('Sauce Labs Bike Light');
         inventoryPage.removeItemFromCart('Sauce Labs Bike Light');
     });
 
-    test('user can view cart', async({page}) => {
-        inventoryPage.clickCartButton();
-        await page.goto(pages.cartPage);
-        expect(cartPage.pageTitle).toContain('Swag Labs')
+    test('user can view cart', async({ page }) => {
+      await page.goto('https://www.saucedemo.com/');
+      loginPage = new LoginPage(page);
+      await loginPage.doLogin("standard_user", "secret_sauce");
+      // await page.goto('https://www.saucedemo.com/inventory.html');
+      inventoryPage.clickCartButton();
+      // await page.goto(pages.cartPage);
+      await expect(cartPage.pageTitle).toContain('Swag Labs')
     });
 });
 
