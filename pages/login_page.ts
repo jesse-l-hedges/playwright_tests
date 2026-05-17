@@ -11,10 +11,11 @@ export class LoginPage {
 
     constructor(page: Page) {
         this.page = page;
+        this.pageTitle = 'Swag Labs';
         this.usernameTextbox = page.getByPlaceholder('Username');
         this.passwordTextbox = page.getByPlaceholder('Password')
         this.LoginButton = page.getByText('Login');
-        this.pageTitle = 'Swag Labs';
+        this.rememberMeCheckbox = page.getByText('Forgot Password')
     }
 
     async fillUsername(username: string) {

@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
-import LoginPage from '/mnt/c/github/playwright_tests/pages/login_page';
-import pages from '/mnt/c/github/playwright_tests/utils/pages';
+import LoginPage from '../pages/login_page';
+import pages from '../utils/pages';
 // import userData from '../../data/user-data';
 
 const userName = process.env.USERNAME!;

@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
-import LoginPage from '/mnt/c/github/playwright_tests/pages/login_page';
-import InventoryPage from '/mnt/c/github/playwright_tests/pages/inventory_page';
-import CartPage from '/mnt/c/github/playwright_tests/pages/cart_page';
-import pages from '/mnt/c/github/playwright_tests/utils/pages';
+import LoginPage from '../pages/login_page';
+import InventoryPage from '../pages/inventory_page';
+import CartPage from '../pages/cart_page';
+import pages from '../utils/pages';
 
 let loginPage: LoginPage;
 let inventoryPage: InventoryPage;
@@ -12,15 +12,16 @@ test.use({ storageState: { cookies: [], origins: [] } }); // doesn't share the l
 // test.use({ storageState: undefined }); // https://github.com/microsoft/playwright/issues/17396
 test.describe.configure({ mode: 'serial' });
 
-/*
+
 test.beforeEach(async ({ page }) => {
   await page.goto('https://www.saucedemo.com/');
   loginPage = new LoginPage(page);
   await loginPage.doLogin("standard_user", "secret_sauce");
   await page.goto('https://www.saucedemo.com/inventory.html');
-  // inventoryPage = new InventoryPage(page);
+  inventoryPage = new InventoryPage(page);
+  cartPage = new CartPage(page);
 });
-*/
+
 
 test.describe('Inventory page tests', async() => {
     test('user sees inventory list', async({ page }) => {
